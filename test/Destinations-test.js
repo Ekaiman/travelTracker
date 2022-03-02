@@ -2,9 +2,9 @@ import chai from "chai";
 const expect = chai.expect;
 import User from "../src/User";
 import UserRepository from "../src/UserRepository";
-import Destinations from "../src/Destinations";
+import Destination from "../src/Destinations";
 
-describe("Destinations", () => {
+describe("Destination", () => {
   let destinationData;
   let destination1;
 
@@ -102,18 +102,24 @@ describe("Destinations", () => {
       },
     ];
 
-    destination1 = new Destinations(destinationData);
+    destination1 = new Destination(destinationData);
   });
 
   it("should be a function", () => {
-    expect(Destinations).to.be.a("function");
+    expect(Destination).to.be.a("function");
   });
 
-  it("should be an instance of UserRepository", () => {
-    expect(destination1).to.be.an.instanceOf(Destinations);
+  it("should be an instance of Destinations", () => {
+    expect(destination1).to.be.an.instanceOf(Destination);
   });
 
   it('should accept destination data and hold it', () => {
     expect(destination1.data).to.eql(destinationData)
   })
+
+  it('should return one destination thats found by its ID', () => {
+    expect(destination1.getOneDestination(9)).to.eql(destinationData[8])
+  })
+
+  it('should return ')
 });
