@@ -5,10 +5,12 @@ import UserRepository from "../src/UserRepository";
 import Destinations from "../src/Destinations";
 import Trips from "../src/Trips"
 import tripData from "../src/tripData"
+import destinationData from "../src/destinationData"
 
 describe("Trips", () => {
   let tripData1;
-  let trip1
+  let trip1;
+  let trip2;
 
   beforeEach(() => {
     tripData1 = [
@@ -34,7 +36,7 @@ describe("Trips", () => {
       "suggestedActivities": []
     }, {
       "id": 3,
-      "userID": 3,
+      "userID": 35,
       "destinationID": 22,
       "travelers": 4,
       "date": "2022/05/22",
@@ -70,7 +72,7 @@ describe("Trips", () => {
       "suggestedActivities": []
     }, {
       "id": 7,
-      "userID": 37,
+      "userID": 35,
       "destinationID": 17,
       "travelers": 5,
       "date": "2022/5/28",
@@ -99,6 +101,7 @@ describe("Trips", () => {
     ];
 
     trip1 = new Trips(44, tripData);
+    trip2 = new Trips(35, tripData1)
   });
 
   it("should be a function", () => {
@@ -126,10 +129,9 @@ describe("Trips", () => {
   })
 
   it('should calculate all trips taken this year', () => {
-    expect(trip1.getCostOfTripsThisYear()).to.equal()
+    expect(trip1.getCostOfTripsThisYear(destinationData)).to.equal(5819)
+    expect(trip2.getCostOfTripsThisYear(destinationData)).to.equal(16368)
   })
 
-  it('should calculate all trips taken ever', () => {
-    expect(trip1.getCostOfTripsThisYear()).to.equal()
-  })
+
 });
