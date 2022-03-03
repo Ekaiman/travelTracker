@@ -1,27 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Travel Tracker</title>
-</head>
-<body>
-  <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
-  <header>
-    <h1 class="title">Travel Tracker</h1>
-  </header>
-  <main>
-    <section>
-      <h1 id="totalSpent">Total Spent this Year:</h1>
-    </section>
-    <section id="allTripsWrapper">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Tracker</title>
+  </head>
+  <body>
+    <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
+    <header>
+      <h1 class="title">Travel Tracker</h1>
+    </header>
+    <form>
+      <input
+        class="date-input"
+        id="dateInput"
+        type="date"
+        value="yyyy-MM-dd"
+        placeholder="date"
+        required
+      />
+      <input
+        class="duration-input"
+        id="durationInput"
+        type="number"
+        min="1"
+        placeholder="duration"
+        required
+      />
+      <input
+        class="travelers-input"
+        id="travelersInput"
+        type="number"
+        min="1"
+        placeholder="# of travelers"
+        required
+      />
+      <select
+        class="destination-drop-down"
+        name="dropDown"
+        id="dropDownDestinations"
+        required
+      >
+        <option value="" disabled selected hidden>destinations</option>
+      </select>
+      <button type="button" name="button">Submit Trip</button>
+    </form>
+    <main>
+      <section>
+        <h1 id="totalSpent">Total Spent this Year:</h1>
+      </section>
+      <section id="allTripsWrapper"></section>
+    </main>
 
-    </section>
-  </main>
-
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="bundle.js"></script>
-
-</body>
+    <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
+    <script src="bundle.js"></script>
+  </body>
 </html>
