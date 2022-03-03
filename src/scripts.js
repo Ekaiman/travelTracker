@@ -30,9 +30,13 @@ let fetchAllData = () => {
     const travelersData = data[0].travelers
     const tripsData = data[1].trips
     const destinationData = data[2].destinations
-    newInstanceTrip(35, tripsData)
+    newInstanceTrip(19, tripsData)
     total = tripInst.getCostOfTripsThisYear(destinationData)
     domUpdates.updateTotalSpent(total)
+    let allTrips = tripInst.tripDataOneUser
+    console.log(allTrips)
+    domUpdates.displayAllTrips(allTrips, destinationData)
+    domUpdates.displayDropDownOptions(destinationData)
   })
 };
 
