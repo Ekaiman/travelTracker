@@ -151,5 +151,6 @@ describe("Trips", () => {
     expect(result).to.be.an("object");
     expect(result.past.length).to.equal(1);
     expect(result.pending.length).to.equal(2);
+    trip3.getTodaysDate()
   });
 });

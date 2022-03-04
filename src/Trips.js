@@ -3,6 +3,7 @@ class Trips {
     this.tripData = tripData;
     this.tripDataOneUser = tripData.filter((trip) => trip.userID === id);
     this.tripDataNumberDates;
+    this.todaysDate;
   }
 
   returnDestinationId() {
@@ -45,17 +46,17 @@ class Trips {
   }
 
   sortedTrips() {
-    this.turnDatesToNumber()
+    this.turnDatesToNumber();
+    this.getTodaysDate()
     let past = [];
     let pending = [];
     let future = [];
     return this.tripDataNumberDates.reduce((obj, currTrip) => {
-      console.log(currTrip.date);
       if (currTrip.status === "pending") {
         pending.push(currTrip);
-      } else if (currTrip.date > 20220304) {
+      } else if (currTrip.date > this.todaysDate) {
         future.push(currTrip);
-      } else if (currTrip.date < 20220304) {
+      } else if (currTrip.date < this.todaysDate) {
         past.push(currTrip);
       }
       obj.past = past;
@@ -63,6 +64,24 @@ class Trips {
       obj.future = future;
       return obj;
     }, {});
+  }
+
+  getTodaysDate() {
+    let today = new Date();
+    let dd = today.getDate();
+
+    let mm = today.getMonth() + 1;
+    let yyyy = today.getFullYear();
+    if (dd < 10) {
+      dd = "0" + dd;
+    }
+
+    if (mm < 10) {
+      mm = "0" + mm;
+    }
+
+    this.todaysDate = parseInt(yyyy + mm  + dd);
+
   }
 }
 export default Trips;
