@@ -10,8 +10,8 @@ class Trips {
     return this.tripDataOneUser.map((trip) => trip.destinationID);
   }
 
-  getCostOfOneTrip(id, lodgingCost, flightCost) {
-    const oneTrip = this.tripDataOneUser.find((trip) => trip.id === id);
+  getCostOfOneTrip(tripId, lodgingCost, flightCost) {
+    const oneTrip = this.tripDataOneUser.find((trip) => trip.id === tripId);
     const dailyLodgingCost = oneTrip.duration * lodgingCost;
     const flightCostTotal = oneTrip.travelers * flightCost;
     const totalCost = dailyLodgingCost + flightCostTotal;
@@ -82,6 +82,15 @@ class Trips {
 
     this.todaysDate = parseInt(yyyy + mm  + dd);
 
+  }
+
+  getCostOfPendingTrip(days, travelers, destinationID, destinationData){
+    let place = destinationData.find(destination => destination.id === destinationID)
+    let dailyCost = place.estimatedLodgingCostPerDay * days
+    let flightCost = place.estimatedFlightCostPerPerson * travelers
+    let total = dailyCost + flightCost
+    let agentFee = (dailyCost + flightCost) * .1
+    return {total, agentFee}
   }
 }
 export default Trips;

@@ -153,4 +153,9 @@ describe("Trips", () => {
     expect(result.pending.length).to.equal(2);
     trip3.getTodaysDate()
   });
+
+  it('should calculate a single trips cost given duration, # of travelers and destinationId', () => {
+    expect(trip1.getCostOfPendingTrip(5, 2, 1, destinationData).total).to.equal(1150)
+    expect(trip1.getCostOfPendingTrip(5, 2, 1, destinationData).agentFee).to.equal(115)
+  })
 });
