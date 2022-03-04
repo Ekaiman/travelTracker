@@ -50,6 +50,11 @@ const domUpdates = {
       dropDownDestinations.innerHTML += `<option value="${destination.destination}">${destination.destination}</option>`;
     });
   },
+
+  displayEstimatedCost(total, agentFee) {
+    let estimatedCost = document.getElementById("estimatedCost")
+    estimatedCost.innerText = `You're estimated cost is ${total} plus an agent fee of ${agentFee} for a total of ${total + agentFee}`
+  }
 };
 
 export default domUpdates;
