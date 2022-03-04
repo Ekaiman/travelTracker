@@ -2,5 +2,44 @@
 @import '_variables';
 
 body {
-  background: $primary-background;
+  background: rgb(219 229 229 / 80%);
+}
+
+
+.oneTrip {
+  height: 40vh;
+  width: 40vh;
+  border: solid blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.square {
+     position: relative;
+     width: 300px;
+     height: 300px;
+     overflow: hidden;
+  }
+  img {
+     position: absolute;
+     max-width: 100%;
+     width: 100%;
+     height: auto;
+     top: 50%;
+     left: 50%;
+     transform: translate( -50%, -50%);
+ }
+
+.allTripsWrapper {
+  border: solid yellow;
+  height: 50vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.title {
+  color: red;
 }
