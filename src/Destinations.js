@@ -8,7 +8,11 @@ class Destination{
     return this.data.find(destination => destination.id === id)
   }
 
-  
+  getDestinationByName(name){
+    return this.data.find(destination => destination.destination === name)
+  }
+
+
 }
 
 export default Destination

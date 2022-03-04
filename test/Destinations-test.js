@@ -121,5 +121,7 @@ describe("Destination", () => {
     expect(destination1.getOneDestination(9)).to.eql(destinationData[8])
   })
 
-  it('should return ')
+  it('should return one destination thats found by a destinations name', () => {
+    expect(destination1.getDestinationByName('Jakarta, Indonesia').id).to.equal(6)
+  })
 });
