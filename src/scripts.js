@@ -76,7 +76,7 @@ let fetchAllData = () => {
     newInstanceTrip(44, tripsData)
     total = tripInst.getCostOfTripsThisYear(destinationData)
     domUpdates.updateTotalSpent(total)
-    let allTrips = tripInst.tripDataOneUser
+    let allTrips = tripInst.sortedTrips()
     domUpdates.displayAllTrips(allTrips, destinationData)
     domUpdates.displayDropDownOptions(destinationData)
     console.log(tripsData)
