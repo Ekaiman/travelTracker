@@ -9,6 +9,7 @@ import Destination from "./Destinations";
 import './css/base.scss';
 
 const calculateButton = document.getElementById("calculateButton")
+const submitButton = document.getElementById("submitButton")
 const dateInput = document.getElementById("dateInput")
 const durationInput = document.getElementById("durationInput")
 const travelersInput = document.getElementById("travelersInput")
@@ -54,7 +55,7 @@ const createPost = () => {
   postData(selectedLocation, tripInfo)
   .then(fetchAllData)
   .catch(error => console.log(error))
-  console.log('AFTER POST', tripsData)
+
 }
 
 
@@ -87,7 +88,6 @@ let fetchAllData = () => {
     let allTrips = tripInst.sortedTrips()
     domUpdates.displayAllTrips(allTrips, destinationData)
     domUpdates.displayDropDownOptions(destinationData)
-    console.log(tripsData)
   })
 };
 
@@ -96,7 +96,7 @@ const loadPage = () => {
   fetchAllData();
 };
 
-calculateButton.addEventListener('click', getTripInformation)
+submitButton.addEventListener('click', getTripInformation)
 calculateButton.addEventListener('click', calculateTripCost)
 
 
