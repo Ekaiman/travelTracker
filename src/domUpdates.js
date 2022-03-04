@@ -6,12 +6,36 @@ const domUpdates = {
   },
 
   displayAllTrips(allTrips, destinationData) {
-    let allTripsWrapper = document.getElementById("allTripsWrapper");
-    allTripsWrapper.innerHTML = ''
-    allTrips.forEach((trip) => {
+    const pastTrips = document.getElementById("pastTrips")
+    const pendingTrips = document.getElementById("pendingTrips")
+    const futureTrips = document.getElementById("futureTrips")
+    pastTrips.innerHTML = ''
+    pendingTrips.innerHTML = ''
+    futureTrips.innerHTML = ''
+    allTrips.pending.forEach((trip) => {
       destinationData.forEach((destination) => {
         if (trip.destinationID === destination.id) {
-          allTripsWrapper.innerHTML += `<div class="oneTrip square">
+          pendingTrips.innerHTML += `<div class="oneTrip square">
+          <p id="destinatio">${destination.destination}</p>
+          <img src='${destination.image}' alt="${destination.alt}">
+          </div>`;
+        }
+      });
+    });
+    allTrips.past.forEach((trip) => {
+      destinationData.forEach((destination) => {
+        if (trip.destinationID === destination.id) {
+          pastTrips.innerHTML += `<div class="oneTrip square">
+          <p id="destinatio">${destination.destination}</p>
+          <img src='${destination.image}' alt="${destination.alt}">
+          </div>`;
+        }
+      });
+    });
+    allTrips.future.forEach((trip) => {
+      destinationData.forEach((destination) => {
+        if (trip.destinationID === destination.id) {
+          futureTrips.innerHTML += `<div class="oneTrip square">
           <p id="destinatio">${destination.destination}</p>
           <img src='${destination.image}' alt="${destination.alt}">
           </div>`;
