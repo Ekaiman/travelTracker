@@ -1,20 +1,17 @@
 const domUpdates = {
   updateTotalSpent(total) {
     let totalSpent = document.getElementById("totalSpent");
-    totalSpent.innerText += ` $${total}`;
-    console.log(total);
-    console.log("dom update");
+    totalSpent.innerText = ''
+    totalSpent.innerText = ` Total Spent this Year: $${total}`;
   },
 
   displayAllTrips(allTrips, destinationData) {
     let allTripsWrapper = document.getElementById("allTripsWrapper");
+    allTripsWrapper.innerHTML = ''
     allTrips.forEach((trip) => {
       destinationData.forEach((destination) => {
-
-        if(trip.destinationID === destination.id){
-
-          console.log(trip.destinationID, 'ID')
-          allTripsWrapper.innerHTML += `<div class="oneTrip">
+        if (trip.destinationID === destination.id) {
+          allTripsWrapper.innerHTML += `<div class="oneTrip square">
           <p id="destinatio">${destination.destination}</p>
           <img src='${destination.image}' alt="${destination.alt}">
           </div>`;
@@ -23,12 +20,12 @@ const domUpdates = {
     });
   },
 
-  displayDropDownOptions(destinationData){
-    let dropDownDestinations = document.getElementById("dropDownDestinations")
+  displayDropDownOptions(destinationData) {
+    let dropDownDestinations = document.getElementById("dropDownDestinations");
     destinationData.forEach(destination => {
-      dropDownDestinations.innerHTML += `<option value="${destination.destination}">${destination.destination}</option>`
-    })
-  }
+      dropDownDestinations.innerHTML += `<option value="${destination.destination}">${destination.destination}</option>`;
+    });
+  },
 };
 
 export default domUpdates;
