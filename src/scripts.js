@@ -16,15 +16,14 @@ const travelersInput = document.getElementById("travelersInput")
 const dropDownDestinations = document.getElementById("dropDownDestinations")
 const inputForm = document.getElementById("inputForm")
 // An example of how you tell webpack to use a CSS (SCSS) file
-let tripInst;
-let destinationInst
-let total;
+let tripInst, destinationInst, userInst, oneUser
 let travelersData
 let tripsData
 let destinationData
 let selectedLocation
 let tripInfo
 let tripId
+let total;
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 // import './images/turing-logo.png'
@@ -36,6 +35,10 @@ const newInstanceTrip = (id, tripData) => {
 
 const newInstanceDestination = (destinationData) => {
   destinationInst = new Destination(destinationData)
+}
+
+const newInstanceUser = (data) => {
+  userInst = new User(data)
 }
 
 const getTripInformation = () => {
@@ -77,19 +80,33 @@ let fetchAllData = () => {
     fetchData("http://localhost:3001/api/v1/travelers"),
     fetchData("http://localhost:3001/api/v1/trips"),
     fetchData("http://localhost:3001/api/v1/destinations"),
+    fetchData("http://localhost:3001/api/v1/travelers/44"),
   ]).then(data => {
     travelersData = data[0].travelers
     tripsData = data[1].trips
     destinationData = data[2].destinations
+    oneUser = data[3]
+    console.log(oneUser)
     newInstanceTrip(44, tripsData)
     newInstanceDestination(destinationData)
+    newInstanceUser(oneUser)
+
     total = tripInst.getCostOfTripsThisYear(destinationData)
-    domUpdates.updateTotalSpent(total)
-    let allTrips = tripInst.sortedTrips()
-    domUpdates.displayAllTrips(allTrips, destinationData)
-    domUpdates.displayDropDownOptions(destinationData)
+
+    updateDom()
+
   })
 };
+
+const updateDom = () => {
+  let name = userInst.getFirstName()
+  let allTrips = tripInst.sortedTrips()
+  // let total = tripInst.getCostOfTripsThisYear(destinationData)
+  domUpdates.welcome(name)
+  domUpdates.updateTotalSpent(total)
+  domUpdates.displayAllTrips(allTrips, destinationData)
+  domUpdates.displayDropDownOptions(destinationData)
+}
 
 
 const loadPage = () => {
