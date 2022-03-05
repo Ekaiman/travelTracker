@@ -1,45 +1,76 @@
 /* This is an example of how to import a partial scss file*/
-@import '_variables';
+@import "_variables";
 
 body {
-  background: rgb(219 229 229 / 80%);
+  background: #bdd4cde3;
 }
-
 
 .oneTrip {
   height: 40vh;
   width: 40vh;
-  border: solid blue;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: #7e9a88;
+  margin: 22px;
+  border-radius: 40px;
 }
 
 .square {
-     position: relative;
-     width: 300px;
-     height: 300px;
-     overflow: hidden;
-  }
-  img {
-     position: absolute;
-     max-width: 100%;
-     width: 100%;
-     height: auto;
-     top: 50%;
-     left: 50%;
-     transform: translate( -50%, -50%);
- }
+  position: relative;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+}
+img {
+  position: absolute;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 .allTripsWrapper {
-  border: solid yellow;
-  height: 50vh;
-  width: 100%;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+flex-direction: row;
+overflow: auto;
+justify-content: center;
+border-radius: 30px;
+background: #f1fcf9;
 }
 
 .title {
   color: red;
+}
+
+.scroll {
+  width: 25%;
+  height: 450px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: center;
+  padding: 20px;
+}
+
+
+.pendingTrips {
+  opacity: 50%;
+}
+
+
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 300px;
+  justify-content: space-evenly;
+}
 }
