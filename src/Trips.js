@@ -89,7 +89,7 @@ class Trips {
     let dailyCost = place.estimatedLodgingCostPerDay * days
     let flightCost = place.estimatedFlightCostPerPerson * travelers
     let total = dailyCost + flightCost
-    let agentFee = (dailyCost + flightCost) * .1
+    let agentFee = Math.round((dailyCost + flightCost) * .1)
     return {total, agentFee}
   }
 }
