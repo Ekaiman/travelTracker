@@ -17,12 +17,8 @@ const dropDownDestinations = document.getElementById("dropDownDestinations")
 const inputForm = document.getElementById("inputForm")
 // An example of how you tell webpack to use a CSS (SCSS) file
 let tripInst, destinationInst, userInst, oneUser
-let travelersData
-let tripsData
-let destinationData
+let travelersData, tripsData, destinationData
 let selectedLocation
-let tripInfo
-let tripId
 let total;
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
@@ -41,37 +37,35 @@ const newInstanceUser = (data) => {
   userInst = new User(data)
 }
 
-const getTripInformation = () => {
-  getDestinationId(destinationData, dropDownDestinations.value)
+
+
+const getTripInformationForPost = () => {
+  // if(dateInput.vale && durationInput.value && travelersInput.value && dropDownDestinations.value){
   let date = dateInput.value
   let dateFixed = date.replaceAll('-', '/')
   let duration = parseInt(durationInput.value)
   let travelers = parseInt(travelersInput.value)
-    tripId = tripsData.length + 1
-    console.log(dropDownDestinations.value, 'DESTINATION SELECTION')
-  tripInfo = {dateFixed, travelers, duration, tripId}
-  createPost()
+  let tripId = tripsData.length + 1
+  let tripInfo = {dateFixed, travelers, duration, tripId}
+  createPost(tripInfo)}
+// }
+
+const getDestinationId = (place) => {
+  selectedLocation = destinationInst.getDestinationByName(dropDownDestinations.value)
+  return selectedLocation
 }
 
-const createPost = () => {
+const createPost = (tripInfo) => {
   fetchAllData()
   postData(selectedLocation, tripInfo)
   .then(fetchAllData)
   .catch(error => console.log(error))
-
 }
 
-
-
-const getDestinationId = (datas, place) => {
-   selectedLocation = datas.find(data => data.destination === place)
-
-  return selectedLocation
-}
 
 const calculateTripCost = () => {
-  let selectedDestination = destinationInst.getDestinationByName(dropDownDestinations.value)
-  let cost = tripInst.getCostOfPendingTrip(durationInput.value, travelersInput.value, selectedDestination.id, destinationData)
+  getDestinationId(dropDownDestinations.value)
+  let cost = tripInst.getCostOfPendingTrip(durationInput.value, travelersInput.value, selectedLocation.id, destinationData)
   domUpdates.displayEstimatedCost(cost.total, cost.agentFee)
 }
 
@@ -82,30 +76,30 @@ let fetchAllData = () => {
     fetchData("http://localhost:3001/api/v1/destinations"),
     fetchData("http://localhost:3001/api/v1/travelers/44"),
   ]).then(data => {
-    travelersData = data[0].travelers
-    tripsData = data[1].trips
-    destinationData = data[2].destinations
-    oneUser = data[3]
+    createData(data[0], data[1], data[2], data[3])
     console.log(oneUser)
     newInstanceTrip(44, tripsData)
     newInstanceDestination(destinationData)
     newInstanceUser(oneUser)
-
     total = tripInst.getCostOfTripsThisYear(destinationData)
-
     updateDom()
-
   })
 };
 
 const updateDom = () => {
   let name = userInst.getFirstName()
-  let allTrips = tripInst.sortedTrips()
-  // let total = tripInst.getCostOfTripsThisYear(destinationData)
+  let allTripsSorted = tripInst.sortedTrips()
   domUpdates.welcome(name)
   domUpdates.updateTotalSpent(total)
-  domUpdates.displayAllTrips(allTrips, destinationData)
+  domUpdates.displayAllTrips(allTripsSorted, destinationData)
   domUpdates.displayDropDownOptions(destinationData)
+}
+
+const createData = (travelers, trips, destination, user) => {
+  travelersData = travelers.travelers
+  tripsData = trips.trips
+  destinationData = destination.destinations
+  oneUser = user
 }
 
 
@@ -113,7 +107,7 @@ const loadPage = () => {
   fetchAllData();
 };
 
-submitButton.addEventListener('click', getTripInformation)
+submitButton.addEventListener('click', getTripInformationForPost)
 calculateButton.addEventListener('click', calculateTripCost)
 
 
