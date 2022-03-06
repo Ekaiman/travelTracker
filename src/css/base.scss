@@ -1,6 +1,77 @@
 /* This is an example of how to import a partial scss file*/
-@import '_variables';
+@import "_variables";
 
 body {
-  background: $primary-background;
+  background: #bdd4cde3;
+}
+
+.oneTrip {
+  height: 40vh;
+  width: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #a3b5cc;
+  margin: 15px;
+  border-radius: 40px;
+  box-shadow: 1px 1px 30px 1px #5f6060ab;
+}
+
+.title {
+  font-size: 30px;
+}
+
+.square {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+}
+img {
+  position: absolute;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.allTripsWrapper {
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+  justify-content: center;
+  border-radius: 30px;
+  background: #f1fcf9;
+  box-shadow: 1px 1px 30px 1px #5f60603d inset;
+
+}
+
+.scroll {
+  height: 450px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: center;
+  padding: 20px;
+}
+
+.pendingTrips {
+  opacity: 50%;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 35vh;
+  justify-content: space-evenly;
+}
+.destination {
+  z-index: 10;
 }

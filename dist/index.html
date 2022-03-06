@@ -1,16 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
-</head>
-<body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="bundle.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Tracker</title>
+  </head>
+  <body>
+    <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
+    <section class="header">
 
-</body>
+        <h1 class="title">Travel Tracker</h1>
+        <p id="welcome"></p>
+    
+      <form id="inputForm">
+        <input
+          class="date-input"
+          id="dateInput"
+          type="date"
+          value="yyyy-MM-dd"
+          placeholder="date"
+          required
+        />
+        <input
+          class="duration-input"
+          id="durationInput"
+          type="number"
+          min="1"
+          placeholder="duration"
+          required
+        />
+        <input
+          class="travelers-input"
+          id="travelersInput"
+          type="number"
+          min="1"
+          placeholder="# of travelers"
+          required
+        />
+        <select
+          class="destination-drop-down"
+          name="dropDown"
+          id="dropDownDestinations"
+          required
+        >
+        </select>
+        <button type="button" name="button" id="calculateButton">
+          Calculate Trip Cost
+        </button>
+      </form>
+
+      <h1 id="totalSpent"></h1>
+      <h1 id="estimatedCost"></h1>
+
+      <button type="button" name="button" id="submitButton">
+        Submit Trip
+      </button>
+    </section>
+    <main>
+      <section class="allTripsWrapper" id="allTripsWrapper">
+        <div class="scroll pastTrips" id="pastTrips">
+          <p>past</p>
+        </div>
+        <div class="scroll pendingTrips" id="pendingTrips">
+          <p>pending</p>
+        </div>
+        <div class="scroll futureTrips" id="futureTrips">
+          <p>future</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
+    <script src="bundle.js"></script>
+  </body>
 </html>
