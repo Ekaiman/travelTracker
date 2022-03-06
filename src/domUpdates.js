@@ -9,9 +9,9 @@ const domUpdates = {
     const pastTrips = document.getElementById("pastTrips");
     const pendingTrips = document.getElementById("pendingTrips");
     const futureTrips = document.getElementById("futureTrips");
-    pastTrips.innerHTML = "";
-    pendingTrips.innerHTML = "";
-    futureTrips.innerHTML = "";
+    pastTrips.innerHTML = "<p>past trips</p>";
+    pendingTrips.innerHTML = "<p>pending trips</p>";
+    futureTrips.innerHTML = "<p>upcoming trips</p>";
 
     if (allTrips.pending.length === 0) {
       pendingTrips.innerHTML += `<div class="oneTrip square">
@@ -22,7 +22,7 @@ const domUpdates = {
         destinationData.forEach((destination) => {
           if (trip.destinationID === destination.id) {
             pendingTrips.innerHTML += `<div class="oneTrip square">
-          <p id="destination">${destination.destination}</p>
+          <p class="destination" id="destination">${destination.destination}</p>
           <img src='${destination.image}' alt="${destination.alt}">
           </div>`;
           }
@@ -33,7 +33,7 @@ const domUpdates = {
       destinationData.forEach((destination) => {
         if (trip.destinationID === destination.id) {
           pastTrips.innerHTML += `<div class="oneTrip square">
-          <p id="destination">${destination.destination}</p>
+          <p class="destination" id="destination">${destination.destination}</p>
           <img src='${destination.image}' alt="${destination.alt}">
           </div>`;
         }
@@ -43,7 +43,7 @@ const domUpdates = {
       destinationData.forEach((destination) => {
         if (trip.destinationID === destination.id) {
           futureTrips.innerHTML += `<div class="oneTrip square">
-          <p id="destinatio">${destination.destination}</p>
+          <p class="destination" id="destinatio">${destination.destination}</p>
           <img src='${destination.image}' alt="${destination.alt}">
           </div>`;
         }
@@ -66,6 +66,10 @@ const domUpdates = {
       total + agentFee
     }`;
   },
+  welcome(name){
+    const welcome = document.getElementById('welcome')
+    welcome.innerText = `Welcome , ${name}!`
+  }
 };
 
 export default domUpdates;
