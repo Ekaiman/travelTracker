@@ -9,54 +9,55 @@
   <body>
     <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
     <section class="header">
-      <header>
+
         <h1 class="title">Travel Tracker</h1>
-      </header>
-    <form id="inputForm">
-      <input
-        class="date-input"
-        id="dateInput"
-        type="date"
-        value="yyyy-MM-dd"
-        placeholder="date"
-        required
-      />
-      <input
-        class="duration-input"
-        id="durationInput"
-        type="number"
-        min="1"
-        placeholder="duration"
-        required
-      />
-      <input
-        class="travelers-input"
-        id="travelersInput"
-        type="number"
-        min="1"
-        placeholder="# of travelers"
-        required
-      />
-      <select
-        class="destination-drop-down"
-        name="dropDown"
-        id="dropDownDestinations"
-        required
-      >
-      </select>
-      <button type="button" name="button" id="calculateButton">
-        Calculate Trip Cost
-      </button>
-    </form>
-    <main>
-      <section>
-        <h1 id="totalSpent"></h1>
-        <h1 id="estimatedCost"></h1>
-        <button type="button" name="button" id="submitButton">
-          Submit Trip
+        <p id="welcome"></p>
+    
+      <form id="inputForm">
+        <input
+          class="date-input"
+          id="dateInput"
+          type="date"
+          value="yyyy-MM-dd"
+          placeholder="date"
+          required
+        />
+        <input
+          class="duration-input"
+          id="durationInput"
+          type="number"
+          min="1"
+          placeholder="duration"
+          required
+        />
+        <input
+          class="travelers-input"
+          id="travelersInput"
+          type="number"
+          min="1"
+          placeholder="# of travelers"
+          required
+        />
+        <select
+          class="destination-drop-down"
+          name="dropDown"
+          id="dropDownDestinations"
+          required
+        >
+        </select>
+        <button type="button" name="button" id="calculateButton">
+          Calculate Trip Cost
         </button>
-      </section>
+      </form>
+
+      <h1 id="totalSpent"></h1>
+      <h1 id="estimatedCost"></h1>
+
+      <button type="button" name="button" id="submitButton">
+        Submit Trip
+      </button>
     </section>
+    <main>
       <section class="allTripsWrapper" id="allTripsWrapper">
         <div class="scroll pastTrips" id="pastTrips">
           <p>past</p>
