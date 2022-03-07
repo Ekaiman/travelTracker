@@ -15,14 +15,21 @@ const durationInput = document.getElementById("durationInput")
 const travelersInput = document.getElementById("travelersInput")
 const dropDownDestinations = document.getElementById("dropDownDestinations")
 const inputForm = document.getElementById("inputForm")
+const tripHolder = document.getElementById("tripHolder")
+const viewAllTrips = document.getElementById("viewAllTrips")
 // An example of how you tell webpack to use a CSS (SCSS) file
 let tripInst, destinationInst, userInst, oneUser
 let travelersData, tripsData, destinationData
 let selectedLocation
 let total;
+let allTripsSorted;
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-// import './images/turing-logo.png'
+import './images/turing-logo.png'
+import "./images/protruding-squares.svg"
+import "./images/luggage.jpg"
+import "./images/tickets.jpg"
+
 
 // console.log('This is the JavaScript entry file - your code begins here.');
 const newInstanceTrip = (id, tripData) => {
@@ -36,6 +43,8 @@ const newInstanceDestination = (destinationData) => {
 const newInstanceUser = (data) => {
   userInst = new User(data)
 }
+
+
 
 
 
@@ -88,7 +97,7 @@ let fetchAllData = () => {
 
 const updateDom = () => {
   let name = userInst.getFirstName()
-  let allTripsSorted = tripInst.sortedTrips()
+  allTripsSorted = tripInst.sortedTrips()
   domUpdates.welcome(name)
   domUpdates.updateTotalSpent(total)
   domUpdates.displayAllTrips(allTripsSorted, destinationData)
@@ -108,7 +117,15 @@ const loadPage = () => {
 };
 
 submitButton.addEventListener('click', getTripInformationForPost)
+
 calculateButton.addEventListener('click', calculateTripCost)
 
+// tripHolder.addEventListener('click', function() {
+//   domUpdates.displayAllTrips(allTripsSorted, destinationData)
+// });
+
+// tripHolder.addEventListener('click', function() {
+//   domUpdates.viewOneTrip(tripsData, destinationData)
+// });
 
 window.onload = loadPage;
