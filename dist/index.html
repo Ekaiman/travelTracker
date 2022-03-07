@@ -9,11 +9,13 @@
   <body>
     <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
     <section class="header">
-
+      <header class="welcomeBanner">
         <h1 class="title">Travel Tracker</h1>
-        <p id="welcome"></p>
-    
-      <form id="inputForm">
+
+        <h1 id="welcome"></h1>
+      </header>
+
+      <form id="inputForm" class="input-forms">
         <input
           class="date-input"
           id="dateInput"
@@ -50,15 +52,15 @@
         </button>
       </form>
 
-      <h1 id="totalSpent"></h1>
-      <h1 id="estimatedCost"></h1>
+      <h1 class="total-spent" id="totalSpent"></h1>
+      <h1 class="estimated-cost" id="estimatedCost"></h1>
 
       <button type="button" name="button" id="submitButton">
         Submit Trip
       </button>
     </section>
-    <main>
-      <section class="allTripsWrapper" id="allTripsWrapper">
+    <section class="trip-holder" id="tripHolder">
+      <section class="allTripsWrapper" id ="allTripsWrapper">
         <div class="scroll pastTrips" id="pastTrips">
           <p>past</p>
         </div>
@@ -69,8 +71,8 @@
           <p>future</p>
         </div>
       </section>
-    </main>
-
+    </section>
+<!-- <a href="https://www.freepik.com/photos/flat-lay">Flat lay photo created by freepik - www.freepik.com</a> -->
     <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
     <script src="bundle.js"></script>
   </body>
