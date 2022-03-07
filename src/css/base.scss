@@ -1,17 +1,28 @@
 /* This is an example of how to import a partial scss file*/
 @import "_variables";
-
+html {
+  height: 100%;
+  width: 100%;
+}
 body {
-  background: #bdd4cde3;
+  background-image: url("../images/luggage.jpg");
+  background-size: cover;
 }
 
+h1{
+  font-size: 30px;
+  margin: 15px;
+}
+
+.estimated-cost,
+.total-spent{
+  font-size: 19px;
+}
 .oneTrip {
-  height: 40vh;
-  width: 40vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #a3b5cc;
+  background: #e7e7e5;
   margin: 15px;
   border-radius: 40px;
   box-shadow: 1px 1px 30px 1px #5f6060ab;
@@ -24,7 +35,7 @@ body {
 .square {
   position: relative;
   width: 300px;
-  height: 200px;
+  height: 300px;
   overflow: hidden;
 }
 img {
@@ -40,16 +51,17 @@ img {
 .allTripsWrapper {
   display: flex;
   flex-direction: row;
+  width: 80vw;
+  height: 60vh;
   overflow: auto;
   justify-content: center;
   border-radius: 30px;
-  background: #f1fcf9;
+  background: #fefefe;
   box-shadow: 1px 1px 30px 1px #5f60603d inset;
-
 }
 
 .scroll {
-  height: 450px;
+  height: 482px;
   overflow-x: hidden;
   overflow-y: auto;
   text-align: center;
@@ -74,4 +86,61 @@ img {
 }
 .destination {
   z-index: 10;
+}
+.trip-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.date-input,
+.duration-input,
+.travelers-input,
+.destination-drop-down {
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 100%;
+  height: 3vh;
+  width: 10vw;
+  margin: 1%;
+  padding: 1%;
+}
+
+.destination-drop-down {
+  height: 5vh;
+}
+
+.welcomeBanner {
+  display: flex;
+  width: 100vw;
+  justify-content: space-between;
+}
+.hidden{
+  display: none;
+}
+
+.input-forms{
+  width: 100%;
+  height: 5vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.oneClickedTrip{
+  height: 500px;
+  width: 800px;
+  border: solid yellow;
+}
+
+.location-picture{
+  height: 300px;
+  width: 400px;
+}
+
+.expanedCardImg{
+  width:300px; /* you can use % */
+  height: auto;
 }
