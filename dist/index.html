@@ -8,13 +8,26 @@
   </head>
   <body>
     <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
-    <section class="header">
+    <section class="login" id="login">
+      <div class ="login-inputs">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" />
+        <label for="pass">Password:</label>
+        <input
+          type="password"
+          id="pass"
+          name="password"
+          minlength="8"
+          required
+        />
+        <input type="submit" value="Sign in" id="signInButton"/>
+      </div>
+    </section>
+    <section class="header hidden" id="header">
       <header class="welcomeBanner">
         <h1 class="title">Travel Tracker</h1>
-
         <h1 id="welcome"></h1>
       </header>
-
       <form id="inputForm" class="input-forms">
         <input
           class="date-input"
@@ -59,8 +72,8 @@
         Submit Trip
       </button>
     </section>
-    <section class="trip-holder" id="tripHolder">
-      <section class="allTripsWrapper" id ="allTripsWrapper">
+    <section class="trip-holder hidden" id="tripHolder">
+      <section class="allTripsWrapper" id="allTripsWrapper">
         <div class="scroll pastTrips" id="pastTrips">
           <p>past</p>
         </div>
@@ -72,7 +85,7 @@
         </div>
       </section>
     </section>
-<!-- <a href="https://www.freepik.com/photos/flat-lay">Flat lay photo created by freepik - www.freepik.com</a> -->
+    <!-- <a href="https://www.freepik.com/photos/flat-lay">Flat lay photo created by freepik - www.freepik.com</a> -->
     <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
     <script src="bundle.js"></script>
   </body>

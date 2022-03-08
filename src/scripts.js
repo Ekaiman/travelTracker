@@ -17,12 +17,16 @@ const dropDownDestinations = document.getElementById("dropDownDestinations")
 const inputForm = document.getElementById("inputForm")
 const tripHolder = document.getElementById("tripHolder")
 const viewAllTrips = document.getElementById("viewAllTrips")
+const username = document.getElementById("username")
+const pass = document.getElementById("pass")
+const signInButton = document.getElementById("signInButton")
 // An example of how you tell webpack to use a CSS (SCSS) file
 let tripInst, destinationInst, userInst, oneUser
 let travelersData, tripsData, destinationData
 let selectedLocation
 let total;
 let allTripsSorted;
+let userId
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
@@ -65,10 +69,18 @@ const getDestinationId = (place) => {
 }
 
 const createPost = (tripInfo) => {
-  fetchAllData()
-  postData(selectedLocation, tripInfo)
-  .then(fetchAllData)
+  // fetchAllData()
+  postData(selectedLocation, tripInfo, userId)
+  .then(fetchAllData())
   .catch(error => console.log(error))
+  .catch((error) => {
+        console.log(error)
+        if (error.message === "Failed to fetch") {
+          return errorTag.innerText = "OOPS SORRY something went wrong"
+        } else {
+          return errorTag.innerText = error.message
+        }
+      });
 }
 
 
@@ -83,15 +95,18 @@ let fetchAllData = () => {
     fetchData("http://localhost:3001/api/v1/travelers"),
     fetchData("http://localhost:3001/api/v1/trips"),
     fetchData("http://localhost:3001/api/v1/destinations"),
-    fetchData("http://localhost:3001/api/v1/travelers/44"),
+    fetchData(`http://localhost:3001/api/v1/travelers/${userId}`),
   ]).then(data => {
     createData(data[0], data[1], data[2], data[3])
     console.log(oneUser)
-    newInstanceTrip(44, tripsData)
+    domUpdates.goToMainPage()
+    console.log(typeof userId)
+    newInstanceTrip(userId, tripsData)
     newInstanceDestination(destinationData)
     newInstanceUser(oneUser)
     total = tripInst.getCostOfTripsThisYear(destinationData)
     updateDom()
+
   })
 };
 
@@ -116,9 +131,24 @@ const loadPage = () => {
   fetchAllData();
 };
 
+const evaluateInformation = () => {
+  let userIdInput = username.value.split("r")[2]
+  userId = parseInt(userIdInput)
+  let userTraveler = username.value.slice(0,8)
+  let passwordInput = pass.value
+
+  if(userTraveler === "traveler" && passwordInput === "travel"){
+    loadPage()
+    // domUpdates.goToMainPage()
+  }
+}
+
 submitButton.addEventListener('click', getTripInformationForPost)
 
 calculateButton.addEventListener('click', calculateTripCost)
+
+signInButton.addEventListener('click', evaluateInformation)
+
 
 // tripHolder.addEventListener('click', function() {
 //   domUpdates.displayAllTrips(allTripsSorted, destinationData)
@@ -127,5 +157,3 @@ calculateButton.addEventListener('click', calculateTripCost)
 // tripHolder.addEventListener('click', function() {
 //   domUpdates.viewOneTrip(tripsData, destinationData)
 // });
-
-window.onload = loadPage;

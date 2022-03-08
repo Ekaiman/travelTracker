@@ -8,12 +8,12 @@ const fetchData = (url) => {
     .catch((error) => console.log(error));
 };
 
-const postData = (selectedLocationObj, getTripInformation) => {
+const postData = (selectedLocationObj, getTripInformation, userId) => {
   return fetch("http://localhost:3001/api/v1/trips", {
     method: "POST",
     body: JSON.stringify({
       id: getTripInformation.tripId,
-      userID: 44,
+      userID: userId,
       destinationID: selectedLocationObj.id,
       travelers: getTripInformation.travelers,
       date: getTripInformation.dateFixed,

@@ -29,6 +29,11 @@ const domUpdates = {
         });
       });
     }
+    if (allTrips.past.length === 0) {
+      pastTrips.innerHTML += `<div class="oneTrip square">
+      <p id="destination"> You have no past trips</p>
+      </div>`;
+    } else {
     allTrips.past.forEach((trip) => {
       destinationData.forEach((destination) => {
         if (trip.destinationID === destination.id) {
@@ -39,6 +44,12 @@ const domUpdates = {
         }
       });
     });
+  }
+  if (allTrips.future.length === 0) {
+    futureTrips.innerHTML += `<div class="oneTrip square">
+    <p id="destination"> You have no upcoming trips</p>
+    </div>`;
+  } else {
     allTrips.future.forEach((trip) => {
       destinationData.forEach((destination) => {
         if (trip.destinationID === destination.id) {
@@ -49,6 +60,7 @@ const domUpdates = {
         }
       });
     });
+  }
   },
 
   displayDropDownOptions(destinationData) {
@@ -78,6 +90,17 @@ const domUpdates = {
   show(element) {
     element.classList.remove("hidden");
   },
+
+  goToMainPage() {
+    const login = document.getElementById("login")
+    const header = document.getElementById("header")
+    const tripHolder = document.getElementById("tripHolder")
+    // login.classList.add("hidden");
+    console.log('something')
+    domUpdates.hide(login)
+    domUpdates.show(header)
+    domUpdates.show(tripHolder)
+  }
 
   // viewOneTrip(tripData, destinationData, allTripsSorted) {
   //   let clickedTripId;
