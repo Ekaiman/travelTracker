@@ -100,7 +100,21 @@ const domUpdates = {
     domUpdates.hide(login)
     domUpdates.show(header)
     domUpdates.show(tripHolder)
-  }
+  },
+  
+  invalidUsernameAndPassword(){
+  wrongInputError.innerText = "Invalid username and password"
+  },
+
+  invalidUsername(){
+    wrongInputError.innerText = "Invalid username"
+
+  },
+
+  invalidPassword(){
+    wrongInputError.innerText = "Invalid password"
+
+  },
 
   // viewOneTrip(tripData, destinationData, allTripsSorted) {
   //   let clickedTripId;
