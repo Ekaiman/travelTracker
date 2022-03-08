@@ -73,7 +73,6 @@ const createPost = (tripInfo) => {
   // fetchAllData()
   postData(selectedLocation, tripInfo, userId)
   .then(fetchAllData())
-  .catch(error => console.log(error))
   .catch((error) => {
         console.log(error)
         if (error.message === "Failed to fetch") {
