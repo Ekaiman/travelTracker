@@ -20,6 +20,7 @@ const viewAllTrips = document.getElementById("viewAllTrips")
 const username = document.getElementById("username")
 const pass = document.getElementById("pass")
 const signInButton = document.getElementById("signInButton")
+const wrongInputError = document.getElementById("wrongInputError")
 // An example of how you tell webpack to use a CSS (SCSS) file
 let tripInst, destinationInst, userInst, oneUser
 let travelersData, tripsData, destinationData
@@ -98,9 +99,6 @@ let fetchAllData = () => {
     fetchData(`http://localhost:3001/api/v1/travelers/${userId}`),
   ]).then(data => {
     createData(data[0], data[1], data[2], data[3])
-    console.log(oneUser)
-    domUpdates.goToMainPage()
-    console.log(typeof userId)
     newInstanceTrip(userId, tripsData)
     newInstanceDestination(destinationData)
     newInstanceUser(oneUser)
@@ -113,6 +111,7 @@ let fetchAllData = () => {
 const updateDom = () => {
   let name = userInst.getFirstName()
   allTripsSorted = tripInst.sortedTrips()
+  domUpdates.goToMainPage()
   domUpdates.welcome(name)
   domUpdates.updateTotalSpent(total)
   domUpdates.displayAllTrips(allTripsSorted, destinationData)
@@ -137,16 +136,21 @@ const evaluateInformation = () => {
   let userTraveler = username.value.slice(0,8)
   let passwordInput = pass.value
 
-  if(userTraveler === "traveler" && passwordInput === "travel"){
+  if(userTraveler === "traveler" && passwordInput === "travel" && userId <= 50){
     loadPage()
-    // domUpdates.goToMainPage()
+  } else if (userTraveler !== "traveler" && passwordInput !== "travel"){
+    domUpdates.invalidUsernameAndPassword()
+  } else if (userTraveler !== "traveler" || userId > 50){
+    domUpdates.invalidUsername()
+  } else if (passwordInput !== "travel") {
+    domUpdates.invalidPassword()
   }
 }
 
+
+
 submitButton.addEventListener('click', getTripInformationForPost)
-
 calculateButton.addEventListener('click', calculateTripCost)
-
 signInButton.addEventListener('click', evaluateInformation)
 
 
