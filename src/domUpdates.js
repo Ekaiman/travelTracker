@@ -80,7 +80,7 @@ const domUpdates = {
   },
   welcome(name) {
     const welcome = document.getElementById("welcome");
-    welcome.innerText = `Welcome , ${name}!`;
+    welcome.innerText = `Welcome,           ${name}!`;
   },
 
   hide(element) {
@@ -95,13 +95,11 @@ const domUpdates = {
     const login = document.getElementById("login")
     const header = document.getElementById("header")
     const tripHolder = document.getElementById("tripHolder")
-    // login.classList.add("hidden");
-    console.log('something')
     domUpdates.hide(login)
     domUpdates.show(header)
     domUpdates.show(tripHolder)
   },
-  
+
   invalidUsernameAndPassword(){
   wrongInputError.innerText = "Invalid username and password"
   },
@@ -115,6 +113,27 @@ const domUpdates = {
     wrongInputError.innerText = "Invalid password"
 
   },
+
+  showSubmitButton(){
+    const submitButton = document.getElementById("submitButton")
+    domUpdates.show(submitButton)
+  },
+
+  hideSubmitButton(){
+    const submitButton = document.getElementById("submitButton")
+    domUpdates.hide(submitButton)
+  },
+
+  confirmTripSent(tripInfo, selectedLocation){
+    let estimatedCost = document.getElementById("estimatedCost");
+    estimatedCost.innerText = `Your trip ${tripInfo.duration} day to ${selectedLocation.destination} for ${tripInfo.travelers} people has been sent to the agency!`
+    setTimeout(domUpdates.hideError, 8000)
+  },
+
+  hideError(){
+    const errorTag = document.getElementById("errorTag")
+    domUpdates.hide(errorTag)
+  }
 
   // viewOneTrip(tripData, destinationData, allTripsSorted) {
   //   let clickedTripId;
