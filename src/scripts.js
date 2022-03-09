@@ -164,12 +164,3 @@ const evaluateInformation = () => {
 submitButton.addEventListener('click', getTripInformationForPost)
 calculateButton.addEventListener('click', calculateTripCost)
 signInButton.addEventListener('click', evaluateInformation)
-
-
-// tripHolder.addEventListener('click', function() {
-//   domUpdates.displayAllTrips(allTripsSorted, destinationData)
-// });
-
-// tripHolder.addEventListener('click', function() {
-//   domUpdates.viewOneTrip(tripsData, destinationData)
-// });
