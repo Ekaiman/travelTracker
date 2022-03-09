@@ -72,7 +72,7 @@ const getDestinationId = (place) => {
 const createPost = (tripInfo) => {
 
   postData(selectedLocation, tripInfo, userId)
-  .then(fetchAllData(), domUpdates.hideSubmitButton(), domUpdates.confirmTripSent(tripInfo, selectedLocation))
+  .then(() => fetchAllData(), domUpdates.hideSubmitButton(), domUpdates.confirmTripSent(tripInfo, selectedLocation))
   .catch((error) => {
         console.log(error.status)
         if (error.message === "Failed to fetch") {
@@ -164,12 +164,3 @@ const evaluateInformation = () => {
 submitButton.addEventListener('click', getTripInformationForPost)
 calculateButton.addEventListener('click', calculateTripCost)
 signInButton.addEventListener('click', evaluateInformation)
-
-
-// tripHolder.addEventListener('click', function() {
-//   domUpdates.displayAllTrips(allTripsSorted, destinationData)
-// });
-
-// tripHolder.addEventListener('click', function() {
-//   domUpdates.viewOneTrip(tripsData, destinationData)
-// });

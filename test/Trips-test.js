@@ -143,7 +143,7 @@ describe("Trips", () => {
 
   it("should reformat all the dates into numbers", () => {
     expect(trip3.turnDatesToNumber()[0].date).to.be.a("number");
-    expect(trip3.tripDataNumberDates[1].date).to.be.a("number");
+    expect(trip3.tripDataNumberDates()[1].date).to.be.a("number");
   });
 
   it("should sort one users trips into past, present and pending", () => {
