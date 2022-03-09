@@ -11,7 +11,7 @@ class Trips {
   }
 
   getCostOfOneTrip(tripId, lodgingCost, flightCost) {
-    const oneTrip = this.tripDataOneUser.find((trip) => trip.id === tripId);
+    const oneTrip = this.tripDataOneUser.find((trip) => trip.id === tripId );
     const dailyLodgingCost = oneTrip.duration * lodgingCost;
     const flightCostTotal = oneTrip.travelers * flightCost;
     const totalCost = dailyLodgingCost + flightCostTotal;
@@ -19,8 +19,11 @@ class Trips {
   }
 
   getCostOfTripsThisYear(destinationData) {
-    const thisYearsTrips = this.tripDataOneUser.filter((trip) =>
-      trip.date.includes("2022")
+    const thisYearsTrips = this.tripDataOneUser.filter((trip) =>{
+      if (trip.date.includes("2022")){
+        return trip
+      }
+    }
     );
     let result = destinationData.reduce((sum, currDestination) => {
       thisYearsTrips.forEach((trip) => {
