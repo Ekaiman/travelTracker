@@ -1,6 +1,5 @@
 import domUpdates from "./domUpdates";
 
-// //FETCH calls
 
 const fetchData = (url) => {
   return fetch(url)
@@ -8,7 +7,6 @@ const fetchData = (url) => {
     .catch((error) => console.log(error));
 };
 
-// getTripInformation.tripId
 const postData = (selectedLocationObj, getTripInformation, userId) => {
   return fetch("http://localhost:3001/api/v1/trips", {
     method: "POST",
