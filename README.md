@@ -60,9 +60,6 @@ After starting both servers, project will run at http://localhost:8080/
    ```
 
 
-# Code Architecture 
-If you want to know more about our code architecture, [click here](https://gist.github.com/Ekaiman/f0c6022e295921a810e7531a4d38f9b0).
-
 # Challenges and Wins
 Asynchronous JavaScript was a challenge in this project. A win was sorting the the trips by their dates and learning more about new Date
 
