@@ -14,14 +14,14 @@ const domUpdates = {
     futureTrips.innerHTML = "<p>upcoming trips</p>";
 
     if (allTrips.pending.length === 0) {
-      pendingTrips.innerHTML += `<div class="oneTrip square">
+      pendingTrips.innerHTML += `<div class="oneTrip square" tabindex="0">
       <p id="destination"> You have no pending trips</p>
       </div>`;
     } else {
       allTrips.pending.forEach((trip) => {
         destinationData.forEach((destination) => {
           if (trip.destinationID === destination.id) {
-            pendingTrips.innerHTML += `<div class="oneTrip square" id=${trip.id}>
+            pendingTrips.innerHTML += `<div class="oneTrip square" tabindex="0" id=${trip.id}>
           <p class="destination" id=${trip.id}>${destination.destination}</p>
           <img src='${destination.image}' alt="${destination.alt}" id=${trip.id}>
           </div>`;
@@ -32,7 +32,7 @@ const domUpdates = {
     allTrips.past.forEach((trip) => {
       destinationData.forEach((destination) => {
         if (trip.destinationID === destination.id) {
-          pastTrips.innerHTML += `<div class="oneTrip square" id=${trip.id}>
+          pastTrips.innerHTML += `<div class="oneTrip square" tabindex="0"  id=${trip.id}>
           <p class="destination" id=${trip.id}>${destination.destination}</p>
           <img src='${destination.image}' alt="${destination.alt}" id=${trip.id}>
           </div>`;
@@ -42,7 +42,7 @@ const domUpdates = {
     allTrips.future.forEach((trip) => {
       destinationData.forEach((destination) => {
         if (trip.destinationID === destination.id) {
-          futureTrips.innerHTML += `<div class="oneTrip square" id=${trip.id}>
+          futureTrips.innerHTML += `<div class="oneTrip square" tabindex="0" id=${trip.id}>
           <p class="destination" id=${trip.id}>${destination.destination}</p>
           <img src='${destination.image}' alt="${destination.alt}" id=${trip.id}>
           </div>`;
