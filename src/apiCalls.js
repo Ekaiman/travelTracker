@@ -8,11 +8,12 @@ const fetchData = (url) => {
     .catch((error) => console.log(error));
 };
 
+// getTripInformation.tripId
 const postData = (selectedLocationObj, getTripInformation, userId) => {
   return fetch("http://localhost:3001/api/v1/trips", {
     method: "POST",
     body: JSON.stringify({
-      id: getTripInformation.tripId,
+      id: Date.now(),
       userID: userId,
       destinationID: selectedLocationObj.id,
       travelers: getTripInformation.travelers,
@@ -28,11 +29,14 @@ const postData = (selectedLocationObj, getTripInformation, userId) => {
 };
 
 const checkOk = (response) => {
-  if (!response.ok){
-    // throw new Error(respose)
+  if (response.status == 422){
+    errorTag.innerText = "Oops, we didnt get that. Please try again."
+    setTimeout(domUpdates.hideError, 2000)
+  } else if (!response.ok){
+    throw new Error(respose)
     throw `${response.status} ${response.statusText}`
   } else {
-    response.json()
+    return response.json()
   }
 }
 
