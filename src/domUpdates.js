@@ -124,17 +124,11 @@ const domUpdates = {
     domUpdates.hide(submitButton)
   },
 
-  confirmTripSent(tripInfo, selectedLocation){
-    let estimatedCost = document.getElementById("estimatedCost");
-    estimatedCost.innerText = `Your ${tripInfo.duration} day trip to ${selectedLocation.destination} for ${tripInfo.travelers} people has been sent to the agency!`
-    setTimeout(domUpdates.hideError, 8000)
-  },
-
   hideError(){
     const errorTag = document.getElementById("errorTag")
     domUpdates.hide(errorTag)
   }
-  
+
 };
 
 export default domUpdates;
