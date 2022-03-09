@@ -10,16 +10,21 @@
     <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
     <section class="login" id="login">
       <div class ="login-inputs">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" />
-        <label for="pass">Password:</label>
-        <input
+
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" />
+
+
+
+          <label for="pass" >Password:</label>
+          <input
           type="password"
           id="pass"
           name="password"
-          minlength="8"
+          class="password"
           required
-        />
+          />
+
         <input type="submit" value="Sign in" id="signInButton"/>
         <p id="wrongInputError"></p>
       </div>
@@ -34,8 +39,8 @@
           class="date-input"
           id="dateInput"
           type="date"
-          value="yyyy-MM-dd"
           placeholder="date"
+          name="date"
           required
         />
         <input
@@ -61,15 +66,16 @@
           required
         >
         </select>
-        <button type="button" name="button" id="calculateButton">
+        <button type="button" name="button" id="calculateButton" class="calculate-button">
           Calculate Trip Cost
         </button>
       </form>
 
       <h1 class="total-spent" id="totalSpent"></h1>
       <h1 class="estimated-cost" id="estimatedCost"></h1>
+      <h1 class="error-tag" id="errorTag"></h1>
 
-      <button type="button" name="button" id="submitButton">
+      <button type="button" name="button" id="submitButton" class="submit-button hidden">
         Submit Trip
       </button>
     </section>

@@ -21,6 +21,7 @@ const username = document.getElementById("username")
 const pass = document.getElementById("pass")
 const signInButton = document.getElementById("signInButton")
 const wrongInputError = document.getElementById("wrongInputError")
+const errorTag = document.getElementById("errorTag")
 // An example of how you tell webpack to use a CSS (SCSS) file
 let tripInst, destinationInst, userInst, oneUser
 let travelersData, tripsData, destinationData
@@ -54,7 +55,6 @@ const newInstanceUser = (data) => {
 
 
 const getTripInformationForPost = () => {
-  // if(dateInput.vale && durationInput.value && travelersInput.value && dropDownDestinations.value){
   let date = dateInput.value
   let dateFixed = date.replaceAll('-', '/')
   let duration = parseInt(durationInput.value)
@@ -70,24 +70,30 @@ const getDestinationId = (place) => {
 }
 
 const createPost = (tripInfo) => {
-  // fetchAllData()
+
   postData(selectedLocation, tripInfo, userId)
-  .then(fetchAllData())
+  .then(fetchAllData(), domUpdates.hideSubmitButton(), domUpdates.confirmTripSent(tripInfo, selectedLocation))
   .catch((error) => {
-        console.log(error)
+        console.log(error.status)
         if (error.message === "Failed to fetch") {
           return errorTag.innerText = "OOPS SORRY something went wrong"
         } else {
-          return errorTag.innerText = error.message
-        }
+        return errorTag.innerText = error.message
+      }
       });
 }
+
+
 
 
 const calculateTripCost = () => {
   getDestinationId(dropDownDestinations.value)
   let cost = tripInst.getCostOfPendingTrip(durationInput.value, travelersInput.value, selectedLocation.id, destinationData)
+
+  if (durationInput.value > 0 && travelersInput.value > 0 && selectedLocation.id && destinationData){
   domUpdates.displayEstimatedCost(cost.total, cost.agentFee)
+  domUpdates.showSubmitButton()
+}
 }
 
 let fetchAllData = () => {
@@ -103,8 +109,15 @@ let fetchAllData = () => {
     newInstanceUser(oneUser)
     total = tripInst.getCostOfTripsThisYear(destinationData)
     updateDom()
-
   })
+  .catch((error) => {
+        console.log(error)
+        if (error.message === "Failed to fetch") {
+          return errorTag.innerText = "OOPS SORRY something went wrong"
+        } else {
+          return errorTag.innerText = error.message
+        }
+      });
 };
 
 const updateDom = () => {
@@ -135,11 +148,11 @@ const evaluateInformation = () => {
   let userTraveler = username.value.slice(0,8)
   let passwordInput = pass.value
 
-  if(userTraveler === "traveler" && passwordInput === "travel" && userId <= 50){
+  if(userTraveler === "traveler" && passwordInput === "travel" && userId <= 50 && userId){
     loadPage()
   } else if (userTraveler !== "traveler" && passwordInput !== "travel"){
     domUpdates.invalidUsernameAndPassword()
-  } else if (userTraveler !== "traveler" || userId > 50){
+  } else if (userTraveler !== "traveler" || userId > 50 || !userId){
     domUpdates.invalidUsername()
   } else if (passwordInput !== "travel") {
     domUpdates.invalidPassword()
