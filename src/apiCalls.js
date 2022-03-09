@@ -28,8 +28,8 @@ const postData = (selectedLocationObj, getTripInformation, userId) => {
 
 const checkOk = (response) => {
   if (response.status == 422){
-    errorTag.innerText = "Oops, we didnt get that. Please try again."
-    setTimeout(domUpdates.hideError, 4000)
+    errorTag.innerText = "Oops, we didnt get that. Please try again and ensure all fields are filled out."
+    setTimeout(domUpdates.hideError, 6000)
   } else if (!response.ok){
     throw `${response.status} ${response.statusText}`
   } else {
