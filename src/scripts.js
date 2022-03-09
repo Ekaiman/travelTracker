@@ -72,7 +72,7 @@ const getDestinationId = (place) => {
 const createPost = (tripInfo) => {
 
   postData(selectedLocation, tripInfo, userId)
-  .then(fetchAllData(), domUpdates.hideSubmitButton(), domUpdates.confirmTripSent(tripInfo, selectedLocation))
+  .then(() => fetchAllData(), domUpdates.hideSubmitButton(), domUpdates.confirmTripSent(tripInfo, selectedLocation))
   .catch((error) => {
         console.log(error.status)
         if (error.message === "Failed to fetch") {
