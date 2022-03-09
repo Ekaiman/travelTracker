@@ -80,7 +80,7 @@ const domUpdates = {
   },
   welcome(name) {
     const welcome = document.getElementById("welcome");
-    welcome.innerText = `Welcome , ${name}!`;
+    welcome.innerText = `Welcome,           ${name}!`;
   },
 
   hide(element) {
@@ -95,13 +95,11 @@ const domUpdates = {
     const login = document.getElementById("login")
     const header = document.getElementById("header")
     const tripHolder = document.getElementById("tripHolder")
-    // login.classList.add("hidden");
-    console.log('something')
     domUpdates.hide(login)
     domUpdates.show(header)
     domUpdates.show(tripHolder)
   },
-  
+
   invalidUsernameAndPassword(){
   wrongInputError.innerText = "Invalid username and password"
   },
@@ -116,82 +114,27 @@ const domUpdates = {
 
   },
 
-  // viewOneTrip(tripData, destinationData, allTripsSorted) {
-  //   let clickedTripId;
-  //   let trips = tripData;
-  //   let destination = destinationData;
-  //   let sorted = allTripsSorted
-  //   let oneTrips = document.querySelectorAll(".oneTrip");
-  //   const pastTrips = document.getElementById("pastTrips");
-  //   const pendingTrips = document.getElementById("pendingTrips");
-  //   const futureTrips = document.getElementById("futureTrips");
-  //   console.log(event.target.id);
-  //   oneTrips.forEach((trip) => {
-  //     if (
-  //       trip.id === event.target.id &&
-  //       event.target.id !== "tripHolder" &&
-  //       event.target.id !== "" &&
-  //       event.target.id !== "pastTrips" &&
-  //       event.target.id !== "pendingTrips" &&
-  //       event.target.id !== "futureTrips" &&
-  //       event.target.id !== "allTripsWrapper"
-  //     ) {
-  //       clickedTripId = trip.id;
-  //       domUpdates.hide(pendingTrips);
-  //       domUpdates.hide(pastTrips);
-  //       domUpdates.hide(futureTrips);
-  //       domUpdates.showTripDetails(trips, destination, clickedTripId);
-  //     } else if (trip.id === "viewAllTrips"){
-  //       domUpdates.show(pendingTrips);
-  //       domUpdates.show(pastTrips);
-  //       domUpdates.show(futureTrips);
-  //       domUpdates.displayAllTrips(sorted, destinationData)
-  //     }
-  //   });
-  // },
-  //
-  // showTripDetails(tripData, destinationData, clickedTripId) {
-  //   let number = parseInt(clickedTripId);
-  //   const allTripsWrapper = document.getElementById("allTripsWrapper");
-  //   let oneTrip = tripData.find((trip) => trip.id === number);
-  //   let date = oneTrip.date.toString().split("");
-  //   let year = [];
-  //   let month = [];
-  //   let day = [];
-  //   date.forEach((number, index) => {
-  //     if (index <= 3) {
-  //       year.push(number);
-  //     } else if (index <= 5) {
-  //       month.push(number);
-  //     } else {
-  //       day.push(number);
-  //     }
-  //   });
-  //   let yearS = year.join("");
-  //   let monthS = month.join("");
-  //   let dayS = day.join("");
-  //   let dateForUser = `${monthS}/${dayS}/${yearS}`;
-  //   console.log(dateForUser);
-  //   destinationData.forEach((destination) => {
-  //     if (oneTrip.destinationID === destination.id) {
-  //       console.log("something");
-  //       allTripsWrapper.innerHTML = `
-  //       <div class="square oneTrip oneClickedTrip" id=${oneTrip.id}>
-  //         <!-- <div class="location-picture"> -->
-  //         <p class="destination" id=${oneTrip.id}>${destination.destination}</p>
-  //           <!-- <img src='${destination.image}' alt="${destination.alt}" class="expanedCardImg"/> -->
-  //         <!-- <p>Total Spent: </p> -->
-  //         <p>Date of Trip: ${dateForUser}</p>
-  //         <p>Length of Trip: ${oneTrip.duration}</p>
-  //         <p>Travelers: ${oneTrip.travelers}</p>
-  //         <!-- </div> -->
-  //         <button type="button" name="button" id="viewAllTrips">
-  //           View All Trips
-  //         </button>
-  //       </div>`;
-  //     }
-  //   });
-  // },
+  showSubmitButton(){
+    const submitButton = document.getElementById("submitButton")
+    domUpdates.show(submitButton)
+  },
+
+  hideSubmitButton(){
+    const submitButton = document.getElementById("submitButton")
+    domUpdates.hide(submitButton)
+  },
+
+  confirmTripSent(tripInfo, selectedLocation){
+    let estimatedCost = document.getElementById("estimatedCost");
+    estimatedCost.innerText = `Your trip ${tripInfo.duration} day to ${selectedLocation.destination} for ${tripInfo.travelers} people has been sent to the agency!`
+    setTimeout(domUpdates.hideError, 8000)
+  },
+
+  hideError(){
+    const errorTag = document.getElementById("errorTag")
+    domUpdates.hide(errorTag)
+  }
+
 };
 
 export default domUpdates;

@@ -12,7 +12,9 @@ body {
 h1 {
   font-size: 30px;
   margin: 15px;
+  font-family: sans-serif;
 }
+
 
 .estimated-cost,
 .total-spent {
@@ -61,7 +63,7 @@ img {
 }
 
 .scroll {
-  height: 482px;
+  height: 453px;
   overflow-x: hidden;
   overflow-y: auto;
   text-align: center;
@@ -108,13 +110,15 @@ img {
 }
 
 .destination-drop-down {
-  height: 5vh;
+  height: 6vh;
 }
 
 .welcomeBanner {
   display: flex;
   width: 100vw;
   justify-content: space-between;
+  background-color: #fdfdfd9e;
+  margin-bottom: 20px;
 }
 
 .hidden {
@@ -142,7 +146,7 @@ img {
 }
 
 .expanedCardImg {
-  width: 300px; /* you can use % */
+  width: 300px; 
   height: auto;
 }
 
@@ -161,6 +165,20 @@ img {
   flex-direction: column;
   justify-content: center;
   border-radius: 43px;
-  background-color: #fefefe;
+  background-color: #fefefeed;
   padding: 80px;
+}
+
+.password{
+  margin-bottom: 20px;
+}
+.submit-button{
+  margin-bottom: 20px;
+}
+
+.submit-button,
+.calculate-button{
+  border-radius: 20px;
+  height: 6vh;
+  border-width: 1px;
 }
