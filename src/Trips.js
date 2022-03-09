@@ -11,7 +11,7 @@ class Trips {
   }
 
   getCostOfOneTrip(tripId, lodgingCost, flightCost) {
-    const oneTrip = this.tripDataOneUser.find((trip) => trip.id === tripId );
+    const oneTrip = this.tripDataOneUser.find((trip) => trip.id === tripId);
     const dailyLodgingCost = oneTrip.duration * lodgingCost;
     const flightCostTotal = oneTrip.travelers * flightCost;
     const totalCost = dailyLodgingCost + flightCostTotal;
@@ -19,12 +19,11 @@ class Trips {
   }
 
   getCostOfTripsThisYear(destinationData) {
-    const thisYearsTrips = this.tripDataOneUser.filter((trip) =>{
-      if (trip.date.includes("2022")){
-        return trip
+    const thisYearsTrips = this.tripDataOneUser.filter((trip) => {
+      if (trip.date.includes("2022")) {
+        return trip;
       }
-    }
-    );
+    });
     let result = destinationData.reduce((sum, currDestination) => {
       thisYearsTrips.forEach((trip) => {
         if (trip.destinationID === currDestination.id) {
@@ -50,7 +49,7 @@ class Trips {
 
   sortedTrips() {
     this.turnDatesToNumber();
-    this.getTodaysDate()
+    this.getTodaysDate();
     let past = [];
     let pending = [];
     let future = [];
@@ -83,17 +82,18 @@ class Trips {
       mm = "0" + mm;
     }
 
-    this.todaysDate = parseInt(yyyy + mm  + dd);
-
+    this.todaysDate = parseInt(yyyy + mm + dd);
   }
 
-  getCostOfPendingTrip(days, travelers, destinationID, destinationData){
-    let place = destinationData.find(destination => destination.id === destinationID)
-    let dailyCost = place.estimatedLodgingCostPerDay * days
-    let flightCost = place.estimatedFlightCostPerPerson * travelers
-    let total = dailyCost + flightCost
-    let agentFee = Math.round((dailyCost + flightCost) * .1)
-    return {total, agentFee}
+  getCostOfPendingTrip(days, travelers, destinationID, destinationData) {
+    let place = destinationData.find(
+      (destination) => destination.id === destinationID
+    );
+    let dailyCost = place.estimatedLodgingCostPerDay * days;
+    let flightCost = place.estimatedFlightCostPerPerson * travelers;
+    let total = dailyCost + flightCost;
+    let agentFee = Math.round((dailyCost + flightCost) * 0.1);
+    return { total, agentFee };
   }
 }
 export default Trips;
