@@ -58,6 +58,7 @@ img {
   border-radius: 30px;
   background: #fefefe;
   box-shadow: 1px 1px 30px 1px #5f60603d inset;
+  border: solid black;
 }
 
 .scroll {
@@ -68,9 +69,6 @@ img {
   padding: 20px;
 }
 
-.pendingTrips {
-  opacity: 50%;
-}
 
 ::-webkit-scrollbar {
   width: 0px;
