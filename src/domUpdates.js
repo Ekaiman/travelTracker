@@ -126,7 +126,7 @@ const domUpdates = {
 
   confirmTripSent(tripInfo, selectedLocation){
     let estimatedCost = document.getElementById("estimatedCost");
-    estimatedCost.innerText = `Your trip ${tripInfo.duration} day to ${selectedLocation.destination} for ${tripInfo.travelers} people has been sent to the agency!`
+    estimatedCost.innerText = `Your ${tripInfo.duration} day trip to ${selectedLocation.destination} for ${tripInfo.travelers} people has been sent to the agency!`
     setTimeout(domUpdates.hideError, 8000)
   },
 
