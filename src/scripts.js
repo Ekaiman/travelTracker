@@ -61,8 +61,8 @@ const getTripInformationForPost = () => {
   let travelers = parseInt(travelersInput.value)
   let tripId = tripsData.length + 1
   let tripInfo = {dateFixed, travelers, duration, tripId}
-  createPost(tripInfo)}
-// }
+  createPost(tripInfo)
+}
 
 const getDestinationId = (place) => {
   selectedLocation = destinationInst.getDestinationByName(dropDownDestinations.value)

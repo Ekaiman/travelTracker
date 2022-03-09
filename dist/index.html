@@ -9,23 +9,18 @@
   <body>
     <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
     <section class="login" id="login">
-      <div class ="login-inputs">
-
-          <label for="username">Username:</label>
-          <input type="text" id="username" name="username" />
-
-
-
-          <label for="pass" >Password:</label>
-          <input
+      <div class="login-inputs">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" />
+        <label for="pass">Password:</label>
+        <input
           type="password"
           id="pass"
           name="password"
           class="password"
           required
-          />
-
-        <input type="submit" value="Sign in" id="signInButton"/>
+        />
+        <input type="submit" value="Sign in" id="signInButton" />
         <p id="wrongInputError"></p>
       </div>
     </section>
@@ -66,7 +61,12 @@
           required
         >
         </select>
-        <button type="button" name="button" id="calculateButton" class="calculate-button">
+        <button
+          type="button"
+          name="button"
+          id="calculateButton"
+          class="calculate-button"
+        >
           Calculate Trip Cost
         </button>
       </form>
@@ -75,7 +75,12 @@
       <h1 class="estimated-cost" id="estimatedCost"></h1>
       <h1 class="error-tag" id="errorTag"></h1>
 
-      <button type="button" name="button" id="submitButton" class="submit-button hidden">
+      <button
+        type="button"
+        name="button"
+        id="submitButton"
+        class="submit-button hidden"
+      >
         Submit Trip
       </button>
     </section>
@@ -92,8 +97,6 @@
         </div>
       </section>
     </section>
-    <!-- <a href="https://www.freepik.com/photos/flat-lay">Flat lay photo created by freepik - www.freepik.com</a> -->
-    <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
     <script src="bundle.js"></script>
   </body>
 </html>
