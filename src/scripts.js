@@ -22,6 +22,7 @@ const pass = document.getElementById("pass")
 const signInButton = document.getElementById("signInButton")
 const wrongInputError = document.getElementById("wrongInputError")
 const errorTag = document.getElementById("errorTag")
+let estimatedCost = document.getElementById("estimatedCost");
 // An example of how you tell webpack to use a CSS (SCSS) file
 let tripInst, destinationInst, userInst, oneUser
 let travelersData, tripsData, destinationData
@@ -72,7 +73,7 @@ const getDestinationId = (place) => {
 const createPost = (tripInfo) => {
 
   postData(selectedLocation, tripInfo, userId)
-  .then(() => fetchAllData(), domUpdates.hideSubmitButton(), domUpdates.confirmTripSent(tripInfo, selectedLocation))
+  .then(() => fetchAllData(), domUpdates.hideSubmitButton(), domUpdates.hide(estimatedCost))
   .catch((error) => {
         console.log(error.status)
         if (error.message === "Failed to fetch") {
@@ -93,6 +94,7 @@ const calculateTripCost = () => {
   if (durationInput.value > 0 && travelersInput.value > 0 && selectedLocation.id && destinationData){
   domUpdates.displayEstimatedCost(cost.total, cost.agentFee)
   domUpdates.showSubmitButton()
+  domUpdates.show(estimatedCost)
 }
 }
 
