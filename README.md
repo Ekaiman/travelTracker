@@ -2,7 +2,7 @@
 
 Travel tracker is an application that shows a users past, pending and current trips taken. They can select a new trip see the calculated estimated cost and submit a new trip which will then appear in pending for an agent to approve.
 
-![Gif 1](http://g.recordit.co/vfFvdwEx7a.gif)
+![Gif 1](http://g.recordit.co/wcdoezP2Qo.gif)
 
 # Contributors
 - [Emili Kaiman](https://github.com/Ekaiman)
