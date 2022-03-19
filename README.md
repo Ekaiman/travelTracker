@@ -50,7 +50,9 @@ To get a local copy up and running follow these simple steps.
    ```
    
 ## View Site
-After starting both servers, project will run at http://localhost:8080/  
+After starting both servers, project will run at http://localhost:8080/
+username: traveler<1 - 50> (Choose a number 1-50)
+password: travel
    
 ## Run Test
 
